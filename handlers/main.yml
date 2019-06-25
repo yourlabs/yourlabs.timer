@@ -1,0 +1,18 @@
+---
+
+- name: Systemd reload
+  notify: Systemd service restart
+  shell: systemctl daemon-reload
+
+- name: Systemd service restart
+  notify: Systemd timer restart
+  service:
+    name: '{{ unit_name }}'
+    state: restarted
+    enabled: yes
+
+- name: Systemd timer restart
+  service:
+    name: '{{ unit_name }}.timer'
+    state: restarted
+    enabled: yes
