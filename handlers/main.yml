@@ -7,12 +7,12 @@
 - name: Systemd service restart
   notify: Systemd timer restart
   service:
-    name: '{{ unit_name }}'
+    name: '{{ name }}'
     state: restarted
     enabled: yes
 
 - name: Systemd timer restart
   service:
-    name: '{{ unit_name }}.timer'
+    name: '{{ name }}.timer'
     state: restarted
     enabled: yes
