@@ -14,8 +14,8 @@
       Type=oneshot
       StandardOutput=journal
       {% if env is defined %}
-      {% for variable in env.items() %}
-      Environment={{ env }}
+      {% for key, variable in env.items() %}
+      Environment={{ key }}={{ variable }}
       {% endfor %}
       {% endif %}
       {% if chdir is defined %}
